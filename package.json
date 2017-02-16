@@ -1,0 +1,30 @@
+{
+  "name": "generic-api",
+  "version": "0.0.1",
+  "description": "generic api for express",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --timeout 5000",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htmlelos/GenericAPI.git"
+  },
+  "keywords": [
+    "generic",
+    "rest",
+    "api"
+  ],
+  "author": "Lucero Sergio Alejandro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htmlelos/GenericAPI/issues"
+  },
+  "homepage": "https://github.com/htmlelos/GenericAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.3"
+  }
+}
