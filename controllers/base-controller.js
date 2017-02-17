@@ -28,7 +28,7 @@ class BaseController {
 
         return this.model
             .findOne(filter)
-            .then(modelInstance => {
+            .then(modelInstance => {   
                 let response = {}
                 response[this.modelName] = modelInstance
                 return response
@@ -69,10 +69,12 @@ class BaseController {
     }
 
     list() {
+        console.log('MODE_NAME:--', this.model.modelName);
         return this.model
             .find({})
-            .limit(MAX_RESULTS)
+            //.limit(MAX_RESULTS)
             .then(modelInstances => {
+                console.log('INSTANCES', modelInstances);
                 let response = {}
                 response[pluralize(this.modelName)] = modelInstances
                 return response
@@ -84,7 +86,7 @@ class BaseController {
             .get((request, response) => {
                 this.list()
                     .then(result => {reply.success(response, result)})
-                    .catch(error => {response.status(404).send(error)})
+                    .catch(error => {response.failure(response, error)})
             })
 
         router.route('/')
@@ -98,7 +100,10 @@ class BaseController {
         router.route('/:id')
             .get((request, response) => {
                 this.read(request.params.id)
-                    .then(result => reply.success(response, result))
+                    .then(result => {
+                        console.log('RESULT--', result)
+                        reply.success(response, result)
+                    })
                     .catch(error => reply.failure(response, error))
             })
 
